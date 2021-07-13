@@ -1,5 +1,5 @@
 # Named Requirement Concepts
-This repository provides concepts and constraints for C++'s standard named requirements. They're contained in a simple, header only file.
+This repository provides concepts and constraints for C++'s standard named requirements.
 
 Implemented concepts attempt to be fully standard compliant, and are documented within the code.
 
