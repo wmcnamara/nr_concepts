@@ -1,14 +1,10 @@
 # Named Requirement Concepts
 This class provides concepts and constraints for C++'s standard named requirements.
 
+Implemented concepts attempt to be fully standard compliant, and are documented within the code.
+
 If your project uses a lot of templates, these can be incredibly useful to provide easy constraints for your template 
 parameters, and improve error messages if a user gives a template an incompatible type.
-
-Implemented concepts are fully standard compatible, and are documented within the code.
-
-All of the desired requirements can be viewed here:
-https://en.cppreference.com/w/cpp/named_req
-
 # Usage
 All of the concepts are contained in the *concepts* namespace, and follow the exact same
 naming conventions as specified in the official C++ standard.
