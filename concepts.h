@@ -71,5 +71,8 @@ namespace concepts
 
 	//can be swapped with an unqualified non-member function call swap()
 	template<typename T>
-	concept Swappable = (requires(T t, T i) { swap(t, i); } || requires(T t, T i) { std::swap(t, i); }) && MoveConstructible<T> && MoveAssignable<T>;
+	concept Swappable = 
+		requires(T t, T i) { swap(t, i); } || requires(T t, T i) { std::swap(t, i); } 
+		&& MoveConstructible<T> 
+		&& MoveAssignable<T>;
 }
