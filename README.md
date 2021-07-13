@@ -5,13 +5,15 @@ Implemented concepts attempt to be fully standard compliant, and are documented 
 
 If your project uses a lot of templates, these can be incredibly useful to provide easy constraints for your template 
 parameters, and improve error messages if a user gives a template an incompatible type.
+
+It is meant as a companion to the standard concepts header.
 # Usage
-All of the concepts are contained in the *concepts* namespace, and follow the exact same
+All of the concepts are contained in the *nr_concepts* namespace, and follow the exact same
 naming conventions as specified in the official C++ standard.
 
 Example:
 ```cpp
-using namespace concepts;
+using namespace nr_concepts;
 
 //T must meet the swappable named requirement
 //https://en.cppreference.com/w/cpp/named_req/Swappable
@@ -41,7 +43,8 @@ void swapSomething(T& a, T&, b)
  - EqualityComparable
  - LessThanCompareable
  - Swappable
-
+ - NullablePointer
+ 
 ## Contributing
 Thank you for wanting to contribute!
 

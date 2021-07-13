@@ -1,8 +1,12 @@
-#pragma once
+#ifndef NAMED_REQUIREMENT_CONCEPTS_H
+#define NAMED_REQUIREMENT_CONCEPTS_H
+
 #include <type_traits>
 #include <algorithm> //std::swap
+#include <cstddef> //std::nullptr_t
+#include <concepts>
 
-namespace concepts
+namespace nr_concepts
 {
 	/*
 		Basic
@@ -63,7 +67,7 @@ namespace concepts
 
 	//operator== is an equivalence relation
 	template<typename T>
-	concept EqualityComparable = requires(T t, T i) { t == i; };
+	concept EqualityComparable = std::equality_comparable<T>::value;
 
 	//operator< is a strict weak ordering relation
 	template<typename T>
@@ -72,7 +76,21 @@ namespace concepts
 	//can be swapped with an unqualified non-member function call swap()
 	template<typename T>
 	concept Swappable = 
-		requires(T t, T i) { swap(t, i); } || requires(T t, T i) { std::swap(t, i); } 
-		&& MoveConstructible<T> 
+		requires(T t, T i) { swap(t, i); }
+		|| requires(T t, T i) { std::swap(t, i); }
+		&& MoveConstructible<T>
 		&& MoveAssignable<T>;
+
+
+	//a pointer-like type supporting a null value 
+	template<typename T>
+	concept NullablePointer =
+		requires(T t) { t == nullptr; }
+		&& EqualityComparable<T>
+		&& DefaultConstructible<T>
+		&& CopyConstructible<T>
+		&& CopyAssignable<T>
+		&& Destructible<T>;
 }
+
+#endif //NAMED_REQUIREMENT_CONCEPTS_H
